@@ -1,28 +1,34 @@
 import React from 'react'
+
+import { space } from './constants'
 import { trebleClef } from './img/Images'
 
-const generateLines = (coord, space) => {
+
+const generateLines = ({x, y, w}) => {
+    const centerLine = y * space
+    const x1 = x
+    const x2 = x + w * space
     return [-2, -1, 0, 1, 2].map(i => {
-        const yCoord = coord.y + i * space
+        const y = centerLine + i * space
         return (
             <line
                 key={i}
-                x1={coord.x}
-                y1={yCoord}
-                x2={coord.x + coord.w}
-                y2={yCoord}
+                x1={x1}
+                y1={y}
+                x2={x2}
+                y2={y}
                 stroke="black"
             />
         )
     })
 }
 
-const Staff = ({ coord, space }) => {
-    const lines = generateLines(coord, space)
-    console.log(trebleClef)
-    return <svg>
-    {lines}
-    {trebleClef(coord, space)}
-    </svg>
+const Staff = ({coord}) => {
+    return (
+        <svg>
+            {generateLines(coord)}
+            {trebleClef(coord)}
+        </svg>
+    )
 }
 export default Staff
