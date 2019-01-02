@@ -1,1 +1,1 @@
-export const space = 20
+export const space = 100

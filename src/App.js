@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { quarterUp } from './img/Images'
 
 import Abc from './Abc'
 
